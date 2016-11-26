@@ -7,6 +7,70 @@
     <groupId>pl.ant</groupId>
     <artifactId>Magica</artifactId>
     <version>0.0.0</version>
+    <description>Brings magic for your server</description>
+
+
+
+
+    <!-- properties -->
+    <properties>
+        <bukkit.version>1.10.2-R0.1-SNAPSHOT</bukkit.version>
+        <spigot.version>1.10-R0.1-SNAPSHOT</spigot.version>
+    </properties>
+
+
+
+
+    <!-- repositories -->
+    <repositories>
+        <repository>
+            <id>bukkit-repo</id>
+            <url>http://repo.bukkit.org/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+
+
+
+
+    <!-- dependencies -->
+    <dependencies>
+        <!-- bukkit -->
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>${bukkit.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- spigot API -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${spigot.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- @NotNull and @Nullable annotations -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>15.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.17</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
