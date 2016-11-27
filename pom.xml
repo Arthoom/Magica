@@ -8,7 +8,7 @@
     <artifactId>Magica</artifactId>
     <version>0.0.0</version>
     <description>Brings magic for your server</description>
-    <packaging>jar</packaging>
+
 
 
 
@@ -50,14 +50,14 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.10.2-R0.1-SNAPSHOT</version>
+            <version>${bukkit.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- spigot API -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.10.2-R0.1-SNAPSHOT</version>
+            <version>${spigot.version}</version>
             <scope>runtime</scope>
         </dependency>
         <!-- @NotNull and @Nullable annotations -->

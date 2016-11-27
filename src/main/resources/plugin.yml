@@ -3,16 +3,10 @@ version: ${project.version}
 main: pl.ant.magica.Magica
 description: Magic for your server.
 authors: [Tooster, Arthoom]
-
+depend: [ProtocolLib, PacketWrapper]
 website: http://t3st3ro.wix.com/magica
 database: true
 prefix: '[Magica]' #6, 5, 6, r
 commands:
-  magica:
-    aliases: mca
-    premission: pl.ant.magica.cmd.magica
-    description: "Main pl.ant.magica.magica's command (for Admin only)"
-    usage: /magica
-permissions:
-  pl.ant.magica.Magica.cmd.magica:
-    description: allows to use /magica
+    magica:
+        description: Switch inventory
