@@ -1,18 +1,8 @@
-name: ${project.artifactId}
-version: ${project.version}
-main: pl.ant.magica.pl.ant.magica.magica
-description: Magic for your server.
-authors: [Tooster, Arthoom]
-
-website: http://t3st3ro.wix.com/magica
-database: true
-prefix: &6[&5Magica&6]%r
+name: Magica
+main: pl.ant.magica.Magica
+version: 0.0.0
+author: [Arthoom, Tooster]
+depend: [ProtocolLib, PacketWrapper]
 commands:
-  magica:
-    aliases: mca
-    premission: pl.ant.magica.magica.cmd.magica
-    description: Main pl.ant.magica.magica's command (for Admin only)
-    usage: /magica
-permissions:
-  pl.ant.magica.Magica.cmd.magica:
-    description: allows to use /magica
+    magica:
+        description: Switch inventory
