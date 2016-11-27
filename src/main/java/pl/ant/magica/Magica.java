@@ -15,25 +15,16 @@ import java.util.logging.Logger;
  */
 public class Magica extends JavaPlugin implements Listener{
 
-    private Logger logger;
     public static final Logger logger = Logger.getLogger("Magica");
     //private static String version;
-    private static Magica Instance;
-    private static ProtocolManager protocolManager;
-
-
-    public Magica() {}
-
     private static Magica instance;
 
-
+    public Magica() {}
 
     @Override
     public void onEnable() {
         instance = this;
-        logger = getLogger();
         logger.info(ChatColor.YELLOW + "enabling Magica...");
-        protocolManager = ProtocolLibrary.getProtocolManager();
         logger.info(ChatColor.YELLOW + "Magica enabled");
 
     }
@@ -63,7 +54,4 @@ public class Magica extends JavaPlugin implements Listener{
 
 
     public static Magica getInstance() {    return instance;    }
-
-    public static ProtocolManager getProtocolManager() { return protocolManager; }
-
 }
