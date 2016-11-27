@@ -8,7 +8,7 @@
     <artifactId>Magica</artifactId>
     <version>0.0.0</version>
     <description>Brings magic for your server</description>
-
+    <packaging>jar</packaging>
 
 
 
@@ -31,6 +31,14 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>inventive-repo</id>
+            <url>http://repo.inventivetalent.org/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>http://repo.dmulloy2.net/content/groups/public/</url>
+        </repository>
     </repositories>
 
 
@@ -42,14 +50,14 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>${bukkit.version}</version>
+            <version>1.10.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <!-- spigot API -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>${spigot.version}</version>
+            <version>1.10.2-R0.1-SNAPSHOT</version>
             <scope>runtime</scope>
         </dependency>
         <!-- @NotNull and @Nullable annotations -->
@@ -57,20 +65,59 @@
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>LATEST</version>
+            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>15.0</version>
+            <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+        <!-- https://www.spigotmc.org/resources/api-particleapi-1-7-1-8-1-9-1-10.2067/ -->
         <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-            <version>1.17</version>
+            <groupId>org.inventivetalent</groupId>
+            <artifactId>particleapi</artifactId>
+            <version>2.1.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://www.spigotmc.org/resources/protocollib.1997/ -->
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib-API</artifactId>
+            <version>4.1.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
+
+
+    <!-- build -->
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <directory>${basedir}/src/main/resources/</directory>
+                <includes>
+                    <include>plugin.yml</include>
+                    <include>config.yml</include>
+                </includes>
+            </resource>
+        </resources>
+
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

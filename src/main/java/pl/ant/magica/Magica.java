@@ -1,10 +1,9 @@
 package pl.ant.magica;
 
+import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import sun.util.logging.PlatformLogger;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -12,25 +11,29 @@ import java.util.logging.Logger;
  */
 public class Magica extends JavaPlugin implements Listener{
 
-    public static final Logger logger = Logger.getLogger("Magica");
-    private static String version;
-    private Magica() {}
+    private Logger logger;
 
-    private static Magica Instance = new Magica();
+    //private static String version;
 
-    public static Magica getInstance() {    return Instance;    }
+    public Magica() {}
+
+    private static Magica instance;
+
+    public static Magica getInstance() {    return instance;    }
 
     @Override
     public void onEnable() {
-        logger.log(Level.INFO, "enabling Magica...");
+        instance = this;
+        logger = getLogger();
+        logger.info(ChatColor.YELLOW + "enabling Magica...");
 
-        logger.log(Level.INFO, "Magica enabled");
+        logger.info(ChatColor.YELLOW + "Magica enabled");
     }
 
     @Override
     public void onDisable() {
-        logger.log(Level.INFO, "disabling Magica...");
+        logger.info(ChatColor.YELLOW + "disabling Magica...");
 
-        logger.log(Level.INFO, "Magica disabled");
+        logger.info(ChatColor.YELLOW + "Magica disabled");
     }
 }
