@@ -1,8 +1,6 @@
 package pl.ant.magica;
 
 import org.bukkit.ChatColor;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
@@ -15,7 +13,7 @@ import java.util.logging.Logger;
  */
 public class Magica extends JavaPlugin implements Listener{
 
-    public static final Logger logger = Logger.getLogger("Magica");
+    private static final Logger logger = Logger.getLogger("Magica");
     //private static String version;
     private static Magica instance;
 
@@ -43,12 +41,12 @@ public class Magica extends JavaPlugin implements Listener{
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        return CommandManager.onCommand(sender, cmd, label, args);
+        return CommandManager.onCommand(sender, args);
     }
 
-    public void registerEvents(Listener listener) {
-        getServer().getPluginManager().registerEvents(listener, this);
-    }
+    //public void registerEvents(Listener listener) {
+    //    getServer().getPluginManager().registerEvents(listener, this);
+    //}
 
 
 

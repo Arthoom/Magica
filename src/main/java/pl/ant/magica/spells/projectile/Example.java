@@ -9,7 +9,7 @@ import pl.ant.magica.Magica;
 import pl.ant.magica.spells.ProjectileSpell;
 
 /**
- * Created by Arthoom on 27.11.2016, 18:58.
+ * Created by Arthoom on 27.11.2016, 18:58
  */
 public class Example extends ProjectileSpell {
 
@@ -61,7 +61,12 @@ public class Example extends ProjectileSpell {
 
     @Override
     protected int getDefaultMaxNumbersOfExecutions() {
-        return 20;
+        return 200;
+    }
+
+    @Override
+    protected double getDefaultDistanceMultiplier() {
+        return 0.1;
     }
 
 }

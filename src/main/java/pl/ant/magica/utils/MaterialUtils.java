@@ -5,7 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 
 /**
- * Created by Arthoom on 27.11.2016, 21:37.
+ * Created by Arthoom on 27.11.2016, 21:37
  */
 public class MaterialUtils {
     public static boolean isSolidBlockInThisLocation(Location location) {
