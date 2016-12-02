@@ -40,33 +40,37 @@ public class Example extends ProjectileSpell {
         particle.setX((float) location.getX());
         particle.setY((float) location.getY());
         particle.setZ((float) location.getZ());
-        particle.setOffsetX((float) 0.2);
-        particle.setOffsetY((float) 0.2);
-        particle.setOffsetZ((float) 0.2);
-        particle.setNumberOfParticles(100);
+        particle.setOffsetX((float) 0.1);
+        particle.setOffsetY((float) 0.1);
+        particle.setOffsetZ((float) 0.1);
+        particle.setNumberOfParticles(20);
         for(Player player : Magica.getInstance().getServer().getOnlinePlayers()) {
             particle.sendPacket(player);
         }
     }
 
     @Override
-    protected int getDefaultNumberOfRepeatsInLoop() {
+    protected int getNumberOfRepeatsInLoop() {
         return 1;
     }
 
     @Override
-    protected int getDefaultPeriodInTick() {
+    protected int getPeriodInTick() {
         return 1;
     }
 
     @Override
-    protected int getDefaultMaxNumbersOfExecutions() {
+    protected int getMaxNumberOfExecutions() {
         return 200;
     }
 
     @Override
     protected double getDefaultDistanceMultiplier() {
-        return 0.1;
+        return 1;
     }
 
+    @Override
+    protected double getDefaultMaxInstability() {
+        return 0.4;
+    }
 }

@@ -8,21 +8,13 @@ import org.bukkit.entity.Player;
  * Created by Arthoom on 27.11.2016, 15:29
  */
 abstract class Spell {
-    @SuppressWarnings("unused")
-    int getNumberOfRepeats(Player player, int defaultNumberOfRepeats) {
-        return defaultNumberOfRepeats;
-    }
-
-    @SuppressWarnings("unused")
-    int getPeriodInTick(Player player, int defaultPeriodInTick) {
-        return defaultPeriodInTick;
-    }
-
-    @SuppressWarnings("unused")
-    int getMaxNumberOfExecutions(Player player, int defaultMaxNumberOfExecutions) { return defaultMaxNumberOfExecutions; }
-
+    //method used to calculate distance multiplier via MagicaPlayer & default distance multiplier
     @SuppressWarnings("unused")
     double getDistanceMultiplier(Player player, double defaultDistanceMultiplier) { return defaultDistanceMultiplier; }
+
+    //method used to calculate the max instability of the spell (spell's vibrations).
+    @SuppressWarnings("unused")
+    double getMaxInstability(Player player, double defaultMaxInstability) { return defaultMaxInstability; }
 
     public abstract void execute(Player player);
 
