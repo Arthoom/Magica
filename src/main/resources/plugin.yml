@@ -6,7 +6,7 @@ authors: [Tooster, Arthoom]
 depend: [ProtocolLib, PacketWrapper]
 website: http://t3st3ro.wix.com/magica
 database: true
-prefix: '[Magica]' #6, 5, 6, r
+prefix: 'Magica' #6, 5, 6, r
 commands:
     magica:
         description: Switch inventory

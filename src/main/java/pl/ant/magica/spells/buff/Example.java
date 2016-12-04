@@ -1,31 +1,38 @@
-package pl.ant.magica.spells.projectile;
+package pl.ant.magica.spells.buff;
 
 import com.comphenix.packetwrapper.WrapperPlayServerWorldParticles;
 import com.comphenix.protocol.wrappers.EnumWrappers;
 import org.bukkit.Location;
-import org.bukkit.entity.Damageable;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import pl.ant.magica.Magica;
-import pl.ant.magica.spells.ProjectileSpell;
+import pl.ant.magica.spells.BuffSpell;
 import pl.ant.magica.spells.SpellEnum;
 
 import java.util.function.Consumer;
 
 /**
- * Created by Arthoom on 27.11.2016, 18:58
+ * Created by Arthoom on 04.12.2016, 14:36, 14:46
  */
+
 @SuppressWarnings("FieldCanBeLocal")
-public class Example extends ProjectileSpell {
-    private String    name = "Example Projectile";
-    private SpellEnum spellEnum = SpellEnum.PROJECTILE_EXAMPLE;
+public class Example extends BuffSpell {
+    private String    name = "Example Buff";
+    private SpellEnum spellEnum = SpellEnum.BUFF_EXAMPLE;
     private int       numberOfRepeatsInLoop = 1;
     private int       periodInTick = 1;
-    private int       maxNumberOfExecutions = 200;
-    private double    defaultDistanceMultiplier = 1;
-    private double    defaultMaxInstability = 0.4;
-    private boolean   hasInstability = true;
+    private int       maxNumberOfExecutions = 10;
+    private boolean   hasInstability = false;
     private boolean   hasEffectMultiplier = true;
+
+    @Override
+    protected void executeWhenSpellEnded(Player player) {
+        if(player.getHealth() + 5 > player.getMaxHealth()) {
+            player.setHealth(player.getMaxHealth());
+        }
+        else {
+            player.setHealth(player.getHealth() + 5);
+        }
+    }
 
     @Override
     protected void executeWhenCast(Player player) {
@@ -33,33 +40,20 @@ public class Example extends ProjectileSpell {
     }
 
     @Override
-    protected void executeWhenHitEntity(Player player, Entity entity) {
-        Damageable hitEntity = (Damageable) entity;
-        hitEntity.damage(5);
-    }
-
-    @Override
-    protected boolean checkWhetherEntityOK(Entity entity) {
-        return entity instanceof Damageable;
-    }
-
-    @Override
-    protected void executeWhenFailure(Player player, Location location) {
-         player.sendMessage(";<!");
-    }
-
-    @Override
-    protected void update(Location location) {
+    protected void update(Player player) {
+        Location location = player.getLocation();
+        location.setY(location.getY() + 1.5);
         WrapperPlayServerWorldParticles particle = new WrapperPlayServerWorldParticles();
-        particle.setParticleType(EnumWrappers.Particle.DRIP_LAVA);
+        particle.setParticleType(EnumWrappers.Particle.CLOUD);
         particle.setX((float) location.getX());
         particle.setY((float) location.getY());
         particle.setZ((float) location.getZ());
-        particle.setOffsetX((float) 0.1);
-        particle.setOffsetY((float) 0.1);
-        particle.setOffsetZ((float) 0.1);
-        particle.setNumberOfParticles(1);
+        particle.setOffsetX((float) 0.5);
+        particle.setOffsetY((float) 0.5);
+        particle.setOffsetZ((float) 0.5);
+        particle.setNumberOfParticles(20);
         Magica.getInstance().getServer().getOnlinePlayers().forEach((Consumer<Player>) particle::sendPacket);
+        location.setY(location.getY() - 1.5);
     }
 
     @Override
@@ -85,16 +79,6 @@ public class Example extends ProjectileSpell {
     @Override
     protected int getMaxNumberOfExecutions() {
         return maxNumberOfExecutions;
-    }
-
-    @Override
-    protected double getDefaultDistanceMultiplier() {
-        return defaultDistanceMultiplier;
-    }
-
-    @Override
-    protected double getDefaultMaxInstability() {
-        return defaultMaxInstability;
     }
 
     @Override

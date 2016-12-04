@@ -14,14 +14,10 @@ import java.util.concurrent.ThreadLocalRandom;
  * Created by Arthoom on 27.11.2016, 15:29
  */
 public abstract class ProjectileSpell  extends Spell {
-    protected abstract void    executeWhenCast(Player player);
     protected abstract void    executeWhenHitEntity(Player player, Entity entity);
     protected abstract boolean checkWhetherEntityOK(Entity entity);                 //Should return true when you want to execute executeWhenHitEntity() for a given entity.
     protected abstract void    executeWhenFailure(Player player, Location location);
-    protected abstract void    update(Location location);                           //DON'T update location, just (for example) particles
-    protected abstract int     getNumberOfRepeatsInLoop();                          //number of repeats of an update in 1 tick (periodInTick)
-    protected abstract int     getPeriodInTick();                                   //time between updating in ticks (and in this tick, update will execute itself numberOfRepeatsInLoop times)
-    protected abstract int     getMaxNumberOfExecutions();                          //the limit of the number of updates
+    protected abstract void    update(Location location); //particles etc.
     protected abstract double  getDefaultDistanceMultiplier();                      //in each update the spell moves <0, 1> block (varies from direction). DistanceMultiplier multiplies it.
     protected abstract double  getDefaultMaxInstability();                          //instability = vibrations of the projectile. 0 -> none.
 
@@ -35,7 +31,7 @@ public abstract class ProjectileSpell  extends Spell {
         private int      maxNumberOfExecutions;
         private double   distanceMultiplier;
         private int      variable; //variable used when launched more than 1 projectile in execute() to calculate differences in position etc.
-        private double   maxInstability = getMaxInstability(player, getDefaultMaxInstability());
+        private double   maxInstability = getMaxInstability(player, getSpellEnum(), getDefaultMaxInstability());
 
         Runnable(Player player, int variable) {
             this.player           = player;
@@ -46,7 +42,7 @@ public abstract class ProjectileSpell  extends Spell {
             numberOfRepeatsInLoop = getNumberOfRepeatsInLoop();
             periodInTick          = getPeriodInTick();
             maxNumberOfExecutions = getMaxNumberOfExecutions();
-            distanceMultiplier    = getDistanceMultiplier(player, getDefaultDistanceMultiplier());
+            distanceMultiplier    = getDistanceMultiplier(player, getSpellEnum(), getDefaultDistanceMultiplier());
             this.variable         = variable;
             executeWhenCast(player);
         }
