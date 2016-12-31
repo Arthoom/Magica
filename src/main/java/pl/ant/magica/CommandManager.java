@@ -7,12 +7,18 @@ import pl.ant.magica.spells.SpellEnum;
 /**
  * Created by Arthoom on 26.11.2016, 23:16
  */
+//TODO fix the shit
 class CommandManager {
+    private Controller controller;
+
+    CommandManager(Controller controller){
+        this.controller = controller;
+    }
     static boolean onCommand(CommandSender sender, String[] args) {
         if(!(sender instanceof Player) || args == null) {
             return false;
         }
-        Player player = (Player) sender;
+        Mage mage = controller.getMage((Player)sender);
         if(args[0].equals("test")) {
             SpellEnum.PROJECTILE_EXAMPLE.execute(player);
         }

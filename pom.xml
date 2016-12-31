@@ -12,21 +12,9 @@
 
 
 
-    <!-- properties -->
-    <properties>
-        <bukkit.version>1.10.2-R0.1-SNAPSHOT</bukkit.version>
-        <spigot.version>1.10-R0.1-SNAPSHOT</spigot.version>
-    </properties>
-
-
-
 
     <!-- repositories -->
     <repositories>
-        <repository>
-            <id>bukkit-repo</id>
-            <url>http://repo.bukkit.org/content/groups/public/</url>
-        </repository>
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
@@ -46,19 +34,20 @@
 
     <!-- dependencies -->
     <dependencies>
-        <!-- bukkit -->
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>${bukkit.version}</version>
-            <scope>provided</scope>
-        </dependency>
+
         <!-- spigot API -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>${spigot.version}</version>
-            <scope>runtime</scope>
+            <version>1.11.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- bukkit -->
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.11.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <!-- @NotNull and @Nullable annotations -->
         <dependency>

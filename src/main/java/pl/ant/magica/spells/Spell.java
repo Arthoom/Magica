@@ -5,9 +5,20 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 /**
- * Created by Arthoom on 27.11.2016, 15:29
+ * Abstract class Spell used For Spell lists
  */
-abstract class Spell {
+public abstract class Spell {
+
+    private String SpellName;
+    public abstract String     getName();
+    protected abstract void    executeWhenCast(Player player);
+    protected abstract int     getNumberOfRepeatsInLoop();//number of repeats of an update in 1 tick (periodInTick)
+    protected abstract int     getPeriodInTick();         //time between updating in ticks (and in this tick, update will execute itself numberOfRepeatsInLoop times)
+    protected abstract int     getMaxNumberOfExecutions();//the limit of the number of updates
+    protected abstract boolean hasInstability();
+    protected abstract boolean hasEffectMultiplier();
+
+
     //method used to calculate distance multiplier via MagicaPlayer & default distance multiplier
     @SuppressWarnings("unused")
     double getDistanceMultiplier(Player player, SpellEnum spellEnum, double defaultDistanceMultiplier) {
@@ -56,15 +67,5 @@ abstract class Spell {
         return null;
     }
 
-    //get the spell's name.
-    //Example of a name: Projectile Example.
-    //Each spell MUST have an unique name.
-    public abstract String     getName();
-    public abstract SpellEnum  getSpellEnum();
-    protected abstract void    executeWhenCast(Player player);
-    protected abstract int     getNumberOfRepeatsInLoop();//number of repeats of an update in 1 tick (periodInTick)
-    protected abstract int     getPeriodInTick();         //time between updating in ticks (and in this tick, update will execute itself numberOfRepeatsInLoop times)
-    protected abstract int     getMaxNumberOfExecutions();//the limit of the number of updates
-    protected abstract boolean hasInstability();
-    protected abstract boolean hasEffectMultiplier();
+
 }

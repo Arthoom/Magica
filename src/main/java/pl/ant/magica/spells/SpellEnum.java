@@ -13,7 +13,7 @@ import java.util.Map;
 public enum SpellEnum {
     PROJECTILE_EXAMPLE(new pl.ant.magica.spells.projectile.Example()),
     BUFF_EXAMPLE(new pl.ant.magica.spells.buff.Example());
-    //etc...
+
 
     private final Spell spell;
     private static Map<SpellEnum, Integer> ids;
